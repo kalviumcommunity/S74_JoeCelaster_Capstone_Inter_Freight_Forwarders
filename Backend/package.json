@@ -1,0 +1,19 @@
+{
+  "name": "s74_joecelaster_capstone_inter_frieght_forwarders",
+  "version": "1.0.0",
+  "description": "Inter Frieght Forwarders is designed to **streamline global trade operations** by simplifying customs clearance and logistics management. Tailored for businesses and individuals to manage import/export documentation, track shipments, and ensure compliance with global regulations — all in one place.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "nodemon": "^3.1.9"
+  }
+}
