@@ -4,6 +4,14 @@ const PORT = 3000;
 
 app.use(express.json());
 
+app.get('/api', (req, res) => {
+  const data = {
+    message: 'This is a GET endpoint example',
+  };
+  res.status(200).json(data);
+});
+
+
 app.post('/api/example', (req, res) => {
   const { name, email } = req.body;
 
