@@ -6,6 +6,21 @@ const PORT = 3000;
 app.use(express.json());
 
 // Dummy data (you would usually get this from a database)
+
+app.get('/api', (req, res) => {
+  const data = {
+    message: 'This is a GET endpoint example',
+  };
+  res.status(200).json(data);
+});
+
+
+app.post('/api/example', (req, res) => {
+  const { name, email } = req.body;
+
+  res.status(201).send({ message: 'Data received', name, email });
+});
+
 let users = [
   { id: 1, name: 'Alice' },
   { id: 2, name: 'Bob' },
