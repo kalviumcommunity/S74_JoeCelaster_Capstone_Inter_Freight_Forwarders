@@ -1,11 +1,26 @@
 const express = require('express');
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser');
+const userRoutes = require('./routes/UserRoutes')
+
+require('dotenv').config()
+
 const app = express();
-const PORT = 3000;
 
-// Middleware to parse JSON
 app.use(express.json());
+app.use(cookieParser());
 
-// Dummy data (you would usually get this from a database)
+
+const MONGO_URI = process.env.MONGO_URI
+const PORT = process.env.PORT
+
+
+mongoose.connect(MONGO_URI)
+.then(()=>console.log('Mongo Connected'))
+.catch(()=>console.log('Error connection'))
+
+
+app.use('/api/users',userRoutes)
 
 app.get('/api', (req, res) => {
   const data = {
@@ -13,6 +28,7 @@ app.get('/api', (req, res) => {
   };
   res.status(200).json(data);
 });
+
 
 
 app.post('/api/example', (req, res) => {
@@ -26,10 +42,9 @@ let users = [
   { id: 2, name: 'Bob' },
 ];
 
-// PUT endpoint to update a user by ID
 app.put('/api/users/:id', (req, res) => {
-  const userId = parseInt(req.params.id); // Get ID from URL
-  const { name } = req.body; // Get updated data from request body
+  const userId = parseInt(req.params.id);
+  const { name } = req.body; 
 
   const user = users.find(u => u.id === userId);
   if (!user) {
