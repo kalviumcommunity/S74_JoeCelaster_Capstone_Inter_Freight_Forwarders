@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const trackerSchema = new mongoose.Schema({
+const trackSchema = new mongoose.Schema({
     trackId : {type: String, required: true}
 })
 
-module.exports = mongoose.model('User',trackerSchema)
+module.exports = mongoose.model('Track',trackSchema)

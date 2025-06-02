@@ -1,19 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const shipmentDocumentSchema = new mongoose.Schema({
-  letterOfCredit: String,
-  packingList: String,
-  invoice: String,
-  po: String,
-  uploadedAt: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  }
-});
+const ShipmentSchema = new mongoose.Schema({
+  letterOfCredit : {type:String},
+  packingList : {type:String},
+  invoice : {type:String},
+  po : {type:String},
+})
 
-module.exports = mongoose.model('ShipmentDocument', shipmentDocumentSchema);
+module.exports = mongoose.model('Shipment',ShipmentSchema)

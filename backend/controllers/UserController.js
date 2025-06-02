@@ -2,26 +2,25 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Register new user
 exports.registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { FirstName ,LastName, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: 'User already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({ FirstName ,LastName, email, password: hashedPassword });
     await user.save();
 
-    res.status(201).json({ message: 'User registered successfully', userId: user._id });
+    res.status(201).json({ message: 'User registered successfully', userId: user._id, data : {FirstName: user.FirstName, SecondName: user.SecondName, email: user.email }});
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// Login user
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -42,7 +41,12 @@ exports.loginUser = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000 
     });
 
-    res.status(200).json({ message: 'Login successful', token });
+    res.status(200).json({ message: 'Login successful', token, data: {
+      email : user.email,
+      FirstName : user.FirstName,
+      SecondName : user.SecondName,
+      password : user.password
+    }});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

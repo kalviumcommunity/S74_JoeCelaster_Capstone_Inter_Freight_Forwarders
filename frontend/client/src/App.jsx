@@ -1,14 +1,27 @@
 import React from 'react';
-
+import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+import Home from './components/Home'
+import About from './components/About'
+import Body from './components/Body'
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Profile from './components/Profile';
+import Account from './components/Account';
 const App = () => {
     return (
         <div>
-            <h1>Inter Freight Forwarders</h1>
-            <h2>Login</h2>
-            <label htmlFor="name">Name</label>
-            <input type="text" className='name'/><br />
-            <label htmlFor="email">Email</label>
-            <input type="text" className='email'/>
+            <Router>
+                <Routes>
+
+                    <Route path='/' element={<Home/>}/> 
+                    <Route path='/about' element={<About/>}/>
+                    <Route path='/whatwedo' element={<Body/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/signup' element={<Signup/>}/>
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/account' element={<Account/>}/>
+                </Routes>
+            </Router>
         </div>
     );
 }
