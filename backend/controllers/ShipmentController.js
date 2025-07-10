@@ -11,7 +11,7 @@ exports.uploadShipmentDocuments = async (req, res) => {
       letterOfCredit: `/uploads/${files.letterOfCredit[0].filename}`,
       packingList: `/uploads/${files.packingList[0].filename}`,
       invoice: `/uploads/${files.invoice[0].filename}`,
-      po: `/uploads/${files.po[0].filename}`
+      purchaseOrder: `/uploads/${files.po[0].filename}`
     });
 
 

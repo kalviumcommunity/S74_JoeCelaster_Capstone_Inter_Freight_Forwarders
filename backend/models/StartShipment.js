@@ -4,7 +4,7 @@ const ShipmentSchema = new mongoose.Schema({
   letterOfCredit : {type:String},
   packingList : {type:String},
   invoice : {type:String},
-  po : {type:String},
+  purchaseOrder : {type:String},
 })
 
 module.exports = mongoose.model('Shipment',ShipmentSchema)
