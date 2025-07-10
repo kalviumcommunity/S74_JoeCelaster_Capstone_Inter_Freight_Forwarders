@@ -11,7 +11,7 @@ require('dotenv').config()
 
 const app = express();
 app.use(cors({
-  origin: '*',    
+  origin: 'https://interfreightforwarders.netlify.app',    
   credentials: true                 
 }));
 
