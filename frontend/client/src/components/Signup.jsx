@@ -41,7 +41,7 @@ const Signup = () => {
 
     return (
         <div className='flex flex-col items-center font-serif justify-evenly min-h-screen bg-blue-500 px-4'>
-            <h1 className='text-3xl text-white font-serif tracking-normal' >Inter Freight Forwarders</h1>
+            <h1 className='text-3xl text-white font-serif tracking-normal ' >Inter Freight Forwarders</h1>
             <div className='w-full max-w-md z-10 space-y-7 border-solid border-2 p-6 border-black bg-white rounded-xl shadow-2xl'>
                 <div className='flex-row space-y-2 font-serif'>
                 <h2 className='text-center font-light text-3xl '>Sign up</h2>

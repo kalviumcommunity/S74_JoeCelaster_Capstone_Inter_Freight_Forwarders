@@ -34,7 +34,7 @@ const Home = () => {
   
   return (
     <div className="bg-gray-100">
-       <nav className={`hidden sm:block  fixed top-0 left-0 w-full shadow-md transition-all duration-500 ${scrolled ? "bg-blue-500 p-4" :"bg-white-400 bg-opacity-50 z-50 backdrop-blur-md p-4"} ` }>
+       <nav className={`hidden sm:block fixed top-0 left-0 w-full z-20 shadow-md transition-all duration-500 ${scrolled ? "bg-blue-500 p-4" :"bg-white-400 bg-opacity-50 z-50 backdrop-blur-md p-4"} ` }>
             <div className="max-w-6xl mx-auto flex items-center justify-start font-serif font-light tracking-wide">
                 <div className=" text-xl text-white">
                     <h2>Inter Freight Forwarders</h2>
@@ -50,7 +50,7 @@ const Home = () => {
             </div>            
        </nav>
 
-       <nav className={` sm:hidden fixed top-0 left-0 w-full shadow-md transition-all duration-500 ${dropped ? "flex flex-col gap-6" : "none"} ${scrolled ? " bg-blue-500 p-4" :" bg-white-400 bg-opacity-50 z-50 backdrop-blur-md p-4"}  `}>
+       <nav className={` sm:hidden fixed top-0 left-0 w-full shadow-md transition-all duration-500 z-20 ${dropped ? "flex flex-col gap-6" : "none"} ${scrolled ? " bg-blue-500 p-4" :" bg-white-400 bg-opacity-50 z-50 backdrop-blur-md p-4"}  `}>
         <div className='flex flex-row items-center justify-between'>
 
           <div className="font-serif font-thin text-xl text-white">

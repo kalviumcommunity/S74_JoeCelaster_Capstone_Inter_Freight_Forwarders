@@ -9,6 +9,8 @@ import gml from '../assets/gml.avif'
 import kgm from '../assets/kgm.png'
 import ship from '../assets/ship.jpg'
 import { Link } from 'react-router-dom';
+import footer from '../assets/footer.png'
+import nightport from '../assets/capture-3.png'
 
 import heroship from '../assets/hero-ship.mp4'
 
@@ -16,27 +18,52 @@ import numberOne from '../assets/image-1.png'
 import numberTwo from '../assets/image-2.png'
 import numberThree from '../assets/image-3.png'
 import numberFour from '../assets/image-4.png'
+import { useState } from 'react';
 
 const Body = () => {
     const logos = [gml,kgm,gml,kgm,gml,kgm,gml,kgm,gml]
+    const [loading,setLoading] = useState(false)
     return (
         <div className='font-serif'>
             
 
                 <div className='relative h-screen overflow-hidden'>
-                    <div className='absolute h-[100vh] w-full overflowhidden z-0'>
+                    <div className='hidden sm:block absolute h-[100vh] w-full overflowhidden z-0'>
+                         {/* Background Image with Fade-Out */}
+<img
+  src={nightport}
+  alt="Fallback"
+  className={`absolute w-full h-full object-cover z-0 transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}
+/>
 
-                        <video autoPlay muted loop playsInline className="absolute z-0 w-full h-full object-cover">
-                            <source src="/port-video.mp4" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-10"></div>
+{/* Video with Fade-In */}
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  onCanPlayThrough={() => setLoading(true)}
+  className={`absolute w-full h-full object-cover z-0 transition-opacity duration-1000 ${loading ? 'opacity-100' : 'opacity-0'}`}
+>
+  <source src="/port-video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+                        {/* <img src={nightport} className='absolute z-0 w-full h-full object-cover' alt="" /> */}
+                        <div className="absolute top-0 left-0 w-full h-full  z-10"></div>
 
                     </div>
 
+                    
+
+                        <div className='block sm:hidden absolute h-[100vh] w-full '>
+                            <img src={img1} alt=""  className='absolute z-0 w-full h-full object-cover'/>
+                            <div className='absolute w-full h-full text-white opacity-60 bg-black'></div>
+                        </div>
+                 
+
                     <div className='hidden sm:flex flex-col gap-11 relative p-20 max-w-4xl text-white z-10' >
                         <div className=''>
-                            <h1 className='text-6xl mt-10 z-10 tracking-wide '>A Comprehensive logistics company,
+                            <h1 className='text-6xl mt-10 z-10 tracking-wide'>A Comprehensive logistics company,
                             Carrying out the Freight Forwarding Business.</h1>
                         </div>
                         
@@ -54,10 +81,10 @@ const Body = () => {
 
                     {/* For Mobile */}
 
-                    <div className='sm:hidden text-5xl mt-28 flex flex-col items-center justify-center relative p-20 w-screen  text-white z-10 gap-5'>
-                        <h1>Welcome to</h1>
+                    <div className='sm:hidden text-5xl mt-16 flex flex-col items-center justify-center relative p-20 w-screen  text-white z-10 gap-5'>
+                        <h1 className='text-5xl text-center'>Welcome to</h1>
                         <h1>IFF</h1>
-                        <h3 className='text-lg text-center'>A Comprehensive logistics company, Carrying out the Freight Forwarding Business.</h3>
+                        <h3 className='text-lg text-center '>A Comprehensive logistics company, Carrying out the Freight Forwarding Business.</h3>
                         <Link className='text-[15px] bg-blue-500 p-4 rounded-xl border-[1px] shadow-md' to='/signup'>Start your Shipment</Link>
                     </div>
 
@@ -87,7 +114,7 @@ const Body = () => {
             <div>
 
            
-            <div className='mx-auto flex justify-around items-center sm:gap-8 md:gap-10 px-2 sm:px-8 z-10 lg:gap-20 flex-nowrap'>
+            <div className='max-w-5xl mx-auto flex justify-center items-center sm:gap-8 md:gap-10 px-2 sm:px-8 z-10 lg:gap-20 flex-nowrap'>
                 <div className='hidden sm:block w-[200px] sm:w-[100px] md:w-[200px] lg:w-[200px]'>
                     <img src={numberOne} alt="" className='w-full h-auto'/>
                 </div>
@@ -104,8 +131,6 @@ const Body = () => {
                         <li>Custom solutions for urgent freight requirements.</li>
                         <li>Fast, reliable air cargo support for businesses.</li>
                     </div>
-
-                    
                 </div>
             </div>
 
@@ -180,7 +205,7 @@ const Body = () => {
             <div className='relative h-screen overflow-hidden'>
 
             <div className='absolute h-[100vh] w-full '>
-                <img src={img1} alt=""  className='absolute z-0 w-full h-full object-cover'/>
+                <img src={footer} alt=""  className='absolute z-0 w-full h-full object-cover'/>
                 <div className='absolute w-full h-full text-white opacity-70 bg-black'></div>
             </div>
             </div>
