@@ -19,8 +19,7 @@ const AdminProfile = () => {
         .then((res)=>{
             setProfile(res.data.user)
             console.log(res.data.user)
-        })
-        
+        })        
         .catch((err)=>{console.error('Error fetchihng profile',err)})       
     }, []);
 

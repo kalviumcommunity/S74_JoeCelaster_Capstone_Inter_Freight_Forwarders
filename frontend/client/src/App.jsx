@@ -13,20 +13,26 @@ import Admin from './components/Admin';
 import AdminLogin from './components/AdminLogin';
 import AdminSignup from './components/AdminSignup';
 import AdminProfile from './components/AdminProfile';
+import TruckLoader from './components/TruckLoader';
+import ManageShipments from './components/ManageShipments';
 
 const App = () => {
   const [appLoading, setAppLoading] = useState(true);
+  // const [fadeOut,setFadeout] = useState(false)
 
   useEffect(() => {
-    // Simulate loading time (you can later replace this with asset/video load completion)
-    const timer = setTimeout(() => setAppLoading(false), 1500); // 1.5 seconds
+    
+    const timer = setTimeout(() =>{ 
+      // setFadeout(true)
+      setAppLoading(false)}, 3000); 
     return () => clearTimeout(timer);
   }, []);
 
   if (appLoading) {
     return (
-      <div className="fixed top-0 left-0 w-full h-full bg-black flex items-center justify-center z-50">
-        <div className="text-white text-3xl animate-pulse">Loading...</div>
+      <div className={`flex flex-col gap-3 fixed top-0 left-0 w-full h-full bg-blue-500 items-center justify-center z-50 transition-opacity duration-1000`}>
+        <div>{<TruckLoader/>}</div>
+        <div className='text-center text-white font-serif text-xl tracking-wide'>Loading...</div>
       </div>
     );
   }
@@ -46,6 +52,7 @@ const App = () => {
         <Route path='/adminlogin' element={<AdminLogin />} />
         <Route path='/adminsignup' element={<AdminSignup />} />
         <Route path='/adminprofile' element={<AdminProfile />} />
+        <Route path='/tracker' element={<ManageShipments/>}></Route>
       </Routes>
     </Router>
   );

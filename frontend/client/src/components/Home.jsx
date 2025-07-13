@@ -40,12 +40,11 @@ const Home = () => {
                     <h2>Inter Freight Forwarders</h2>
                 </div>
                 <ul className="list-none flex gap-8 text-white font-medium ml-auto">
-                <Link to = '/' className="hover:text-gray-200 cursor-pointer">Home</Link>
-                <Link to = '/about' className="hover:text-gray-200 cursor-pointer">About us</Link>
-                <Link to = '/whatwedo' className="hover:text-gray-200 cursor-pointer">What we do</Link>
-                <Link to = '/login' className="hover:text-gray-200 cursor-pointer">Login</Link>
-                <Link to = '/signup' className="hover:text-gray-200 cursor-pointer">Signup</Link>
-                <Link to = '/adminlogin' className="hover:text-gray-200 cursor-pointer">Admin</Link>
+                <Link to = '/' className="relative inline-block cursor-pointer after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-400 after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+                <Link to = '/about' className="relative inline-block cursor-pointer after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-400 after:transition-all after:duration-300 hover:after:w-full">About us</Link>
+                <Link to = '/whatwedo' className="relative inline-block cursor-pointer after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-400 after:transition-all after:duration-300 hover:after:w-full">What we do</Link>
+                <Link to = '/login' className="relative inline-block cursor-pointer after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-400 after:transition-all after:duration-300 hover:after:w-full">Login</Link>
+                <Link to = '/adminlogin' className="relative inline-block cursor-pointer after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-400 after:transition-all after:duration-300 hover:after:w-full">Admin</Link>
                 </ul>
             </div>            
        </nav>
@@ -62,12 +61,12 @@ const Home = () => {
         </div> 
         
         <div>
-          <ul className={`list-none flex flex-col justify-start transition-all duration-200 ease-in-out gap-3 text-white font-medium text-lg ml-auto ${dropped ? "opacity-100 max-h-96" : "gap-6 opacity-0 max-h-0 overflow-hidden"} `}>
-                <Link to = '/' className="hover:text-gray-200 cursor-pointer">Home</Link><hr className='border-none bg-gray-400 h-[1px]'/>
-                <Link to = '/about' className="hover:text-gray-200 cursor-pointer">About us</Link><hr className='border-none bg-gray-400 h-[1px]'/>
-                <Link to = '/whatwedo' className="hover:text-gray-200 cursor-pointer">What we do</Link><hr className='border-none bg-gray-400 h-[1px]'/>
-                <Link to = '/login' className="hover:text-gray-200 cursor-pointer">Login</Link><hr className='border-none bg-gray-400 h-[1px]'/>
-                <Link to = '/signup' className="hover:text-gray-200 cursor-pointer">Signup</Link><hr className='border-none bg-gray-400 h-[1px]'/>
+          <ul className={`font-serif list-none flex flex-col justify-start transition-all duration-200 ease-in-out gap-3 text-white font-medium text-lg ml-auto ${dropped ? "opacity-100 max-h-96" : "gap-6 opacity-0 max-h-0 overflow-hidden"} `}>
+                <Link to = '/' className="hover:text-gray-200 cursor-pointer">Home</Link><hr className='border-none bg-neutral-400 opacity-45 h-[0.5px]'/>
+                <Link to = '/about' className="hover:text-gray-200 cursor-pointer">About us</Link><hr className='border-none bg-neutral-400 opacity-45 h-[0.5px]'/>
+                <Link to = '/whatwedo' className="hover:text-gray-200 cursor-pointer">What we do</Link><hr className='border-none bg-neutral-400 opacity-45 h-[0.5px]'/>
+                <Link to = '/login' className="hover:text-gray-200 cursor-pointer">Login</Link><hr className='border-none bg-neutral-400 opacity-45 h-[0.5px]'/>
+                <Link to = '/signup' className="hover:text-gray-200 cursor-pointer">Signup</Link><hr className='border-none bg-neutral-400 opacity-45 h-[0.5px]'/>
                 <Link to = '/adminlogin' className="hover:text-gray-200 cursor-pointer">Admin</Link>
           </ul>
         </div>

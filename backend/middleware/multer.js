@@ -14,7 +14,7 @@ const documents = upload.fields([
     {name : 'letterOfCredit',maxCount:1},
     {name : 'packingList',maxCount:1},
     {name : 'invoice',maxCount:1},
-    {name : 'po',maxCount:1},
+    {name : 'purchaseOrder',maxCount:1},
 ]);
 
 module.exports = documents

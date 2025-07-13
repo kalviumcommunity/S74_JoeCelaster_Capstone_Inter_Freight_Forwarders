@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Adminusers = ['iffadmin@gmail.com','joeadmin45@gmail.com']
+const isProduction = process.env.NODE_ENV === 'production';
 
 exports.registerUser = async (req, res) => {
   try {
@@ -21,17 +22,18 @@ exports.registerUser = async (req, res) => {
       userId: user.id,
       FirstName:user.FirstName,
       LastName: user.LastName,
+      email:user.email,
       role: user.role
     }
 
     const token = jwt.sign(PAYLOAD,process.env.JWT_SECRET,{expiresIn:'7d'})
 
-    res.cookie('user_token',token,{
+    res.cookie('user_token', token, {
       httpOnly: true,
-      sameSite: 'Lax',
-      secure: 'False',
+      sameSite: isProduction ? 'None' : 'Lax',
+      secure: isProduction, 
       maxAge: 7 * 24 * 60 * 60 * 1000
-    })
+    });
     res.status(201).json({ message: 'User registered successfully', userId: user._id, user : {FirstName: user.FirstName, LastName: user.LastName, email: user.email , role: user.role}});
 
   } catch (err) {
@@ -57,18 +59,18 @@ exports.registerAdmin = async (req,res) => {
     
     const token = jwt.sign(PAYLOAD, process.env.JWT_SECRET, {expiresIn: '7d'})
     
-    res.cookie('admin_token',token, {
+    res.cookie('admin_token', token, {
       httpOnly: true,
-      secure: false, 
-      sameSite:'Lax',
-      maxAge:  7 * 24 * 60 * 60 * 1000 
-    })
+      sameSite: isProduction ? 'None' : 'Lax',
+      secure: isProduction, // true if production, false if local
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
     
     res.status(201).send({message: 'Admin created!', token, PAYLOAD})
 
 
   } catch (error) {
-    res.status(500).send(error.message)
+    return res.status(500).send(error.message)
   }
 };
 
