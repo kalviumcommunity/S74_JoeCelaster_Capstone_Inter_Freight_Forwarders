@@ -49,7 +49,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/your-username/interfreight-forwarder.git](https://github.com/kalviumcommunity/S74_JoeCelaster_Capstone_Inter_Freight_Forwarders.git)
+git clone https://github.com/kalviumcommunity/S74_JoeCelaster_Capstone_Inter_Freight_Forwarders.git
 cd S74_JoeCelaster_Capstone_Inter_Freight_Forwarders
 ```
 
