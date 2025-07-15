@@ -292,13 +292,13 @@ const Body = () => {
 
             </div>
 
-            <div className="relative  bg-[url('./footer.png')] bg-cover bg-center bg-no-repeat text-white">
+            <div className="relative  bg-[url('./assets/footer.png')] bg-cover bg-center bg-no-repeat text-white">
       
             {/* Overlay */}
             <div className="absolute inset-0 bg-black opacity-80 z-10"></div>
 
             {/* Footer Content */}
-            <footer className="relative z-20 h-full flex flex-col justify-end px-6 py-10">
+            <footer className="relative z-10 h-full flex flex-col justify-end px-6 py-10">
                 <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 text-sm">
                     <div>
                     <h3 className="font-semibold mb-3">Company</h3>

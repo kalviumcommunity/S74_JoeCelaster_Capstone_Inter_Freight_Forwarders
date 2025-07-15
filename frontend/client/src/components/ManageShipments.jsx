@@ -23,7 +23,9 @@ const ManageShipments = () => {
     return (
         <div>
             <h1>joe</h1>
-            <h1>{Profile?.userFirstName}</h1>
+            <h1>{Profile?.userFirstName}</h1> 
+
+            
             <h1>{Profile?.userEmail}</h1>
             <h1>{Profile?.letterOfCredit}</h1>
             <h1>{Profile?.packingList}</h1>
