@@ -9,13 +9,15 @@ import axios from 'axios';
 
 const AdminProfile = () => {
     const location = useLocation()
+    const apiURL = import.meta.env.VITE_BACKEND_URL;
+
 
     // const [Profile, setProfile] = useStatte
 
     const [Profile,setProfile] = useState({})
 
     useEffect(() => {
-        axios.get('http://localhost:5000/admin/profile',{withCredentials:true})
+        axios.get(`${apiURL}/admin/profile`,{withCredentials:true})
         .then((res)=>{
             setProfile(res.data.user)
             console.log(res.data.user)

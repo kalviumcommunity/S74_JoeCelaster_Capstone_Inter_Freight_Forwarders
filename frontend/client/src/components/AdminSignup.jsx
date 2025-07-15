@@ -16,11 +16,11 @@ const AdminSignup = () => {
     const [password,setPassword] = useState("")
     const [confirmPassword,setConfirmPassword] = useState("")
     const navigate = useNavigate()
-    const apiURL = import.meta.env.VITE_BACKEND_URL;
-    console.log("Api:",apiURL)
-
+    
     
     const handleSignup = async (e) => {
+        const apiURL = import.meta.env.VITE_BACKEND_URL;
+        console.log("Api:",apiURL)
         e.preventDefault();
         try {
         const res = await axios.post(`${apiURL}/admin/register`, {FirstName,LastName,email,password},{ withCredentials:true});

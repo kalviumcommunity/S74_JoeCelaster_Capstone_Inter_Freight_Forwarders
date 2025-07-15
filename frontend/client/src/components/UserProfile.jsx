@@ -10,6 +10,8 @@ import axios from 'axios';
 
 const Profile = () => {
     const [Profile,setProfile] = useState({})
+    const apiURL = import.meta.env.VITE_BACKEND_URL;
+
     // const location = useLocation()
 
     // const [Profile, setProfile] = useStatte
@@ -17,7 +19,7 @@ const Profile = () => {
     // const [Profile,setProfile] = useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/users/profile',{withCredentials:true})
+        axios.get(`${apiURL}/users/profile`,{withCredentials:true})
         .then((res)=>{setProfile(res.data.user)})
         .catch((err)=>{console.error('Error fetchihng profile',err)})
     }, []);
