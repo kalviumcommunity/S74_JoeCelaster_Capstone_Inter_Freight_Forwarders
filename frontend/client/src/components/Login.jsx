@@ -11,12 +11,12 @@ const Login = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const navigate = useNavigate()
-    const apiURL = import.meta.env.LOCAL_URL;
+    const apiURL = import.meta.env.VITE_BACKEND_URL;
 
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post(`http://localhost:5000/users/login`,{email,password},{withCredentials: true})
+            const res = await axios.post(`${apiURL}/users/login`,{email,password},{withCredentials: true})
             // localStorage.setItem("token",res.data.token)
             // console.log(res.data)
             
