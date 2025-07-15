@@ -2,9 +2,6 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const Adminusers = ['iffadmin@gmail.com','joeadmin45@gmail.com']
-const isProduction = process.env.NODE_ENV === 'production';
-
 exports.registerUser = async (req, res) => {
   try {
     const { FirstName ,LastName, email, password} = req.body;
@@ -26,12 +23,15 @@ exports.registerUser = async (req, res) => {
       role: user.role
     }
 
+    const origin = req.headers.origin;
+    const isLocal = origin === process.env.LOCAL_URL;
+
     const token = jwt.sign(PAYLOAD,process.env.JWT_SECRET,{expiresIn:'7d'})
 
     res.cookie('user_token', token, {
       httpOnly: true,
-      sameSite: isProduction ? 'None' : 'Lax',
-      secure: isProduction, 
+      sameSite: isLocal ? 'Lax' : 'None',
+      secure: !isLocal, 
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
     res.status(201).json({ message: 'User registered successfully', userId: user._id, user : {FirstName: user.FirstName, LastName: user.LastName, email: user.email , role: user.role}});
@@ -58,11 +58,14 @@ exports.registerAdmin = async (req,res) => {
     const PAYLOAD = {userId: newAdmin._id,FirstName: newAdmin.FirstName, LastName: newAdmin.LastName, email: newAdmin.email, role: newAdmin.role}
     
     const token = jwt.sign(PAYLOAD, process.env.JWT_SECRET, {expiresIn: '7d'})
+
+    const origin = req.headers.origin;
+    const isLocal = origin === process.env.LOCAL_URL;
     
     res.cookie('admin_token', token, {
       httpOnly: true,
-      sameSite: isProduction ? 'None' : 'Lax',
-      secure: isProduction, // true if production, false if local
+      sameSite: isLocal ? 'Lax' : 'None',
+      secure: !isLocal, // true if production, false if local
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
     
@@ -94,10 +97,13 @@ exports.loginAdmin =async (req,res) => {
 
     const token = jwt.sign(PAYLOAD,process.env.JWT_SECRET,{expiresIn:'7d'})
 
+    const origin = req.headers.origin;
+    const isLocal = origin === process.env.LOCAL_URL;
+
     res.cookie('admin_token',token,{
       httpOnly: true,
-      secure: false,
-      sameSite:'Lax',
+      sameSite: isLocal ? 'Lax' : 'None',
+      secure: !isLocal, // tr
       maxAge: 7 * 24 * 60 * 60 * 1000 
     })
 
@@ -123,10 +129,13 @@ exports.loginUser = async (req, res) => {
       expiresIn: '7d',
     });
 
+    const origin = req.headers.origin;
+    const isLocal = origin === process.env.LOCAL_URL;
+
     res.cookie('user_token', token, {
       httpOnly: true,
-      secure: false,
-      sameSite:'Lax',
+      sameSite: isLocal ? 'Lax' : 'None',
+      secure: !isLocal,
 
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
