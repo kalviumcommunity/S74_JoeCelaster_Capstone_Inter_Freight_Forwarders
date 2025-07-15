@@ -9,11 +9,14 @@ const adminRoutes = require('./routes/AdminRoutes')
 
 require('dotenv').config()
 
-const app = express();
+const app=express()
+
+const FRONTEND_URL = process.env.FRONTEND_URL
+
 app.use(cors({
-  origin: 'http://localhost:5173',    
-  credentials: true                 
-}));
+  origin : FRONTEND_URL,
+  credentials: true
+}))
 
 app.use(express.json());
 app.use(cookieParser());
