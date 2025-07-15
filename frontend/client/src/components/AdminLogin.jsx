@@ -6,10 +6,10 @@ import signup from './AdminSignup'
 
 import { Link, useNavigate } from 'react-router-dom';
 
-const apiURL = import.meta.env.VITE_BACKEND_URL
 
 const AdminLogin = () => {
-
+    
+    const apiURL = import.meta.env.VITE_BACKEND_URL
     // const [profile,setProfile] = useState(null)
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
